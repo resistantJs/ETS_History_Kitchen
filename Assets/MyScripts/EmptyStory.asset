@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 868467bafea1049c299f37de689b7b8b, type: 3}
+  m_Name: EmptyStory
+  m_EditorClassIdentifier: 
+  storyName: 
+  ingredients:
+  - {fileID: 11400000, guid: cce7d7951b0144e2ca2335f385230d2b, type: 2}
+  - {fileID: 11400000, guid: eccb55fba51304d869a8eaa21becc424, type: 2}
+  clip: {fileID: 0}
