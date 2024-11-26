@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class CookingInput : MonoBehaviour
 {
+
+
+
     public RecipeManager recipeManager;
 
     // List to keep track of ingredients currently in the pot
@@ -23,6 +27,7 @@ public class CookingInput : MonoBehaviour
             recipeManager = FindObjectOfType<RecipeManager>();
         }
     }
+
 
     // This function is called when another collider enters the trigger collider attached to this object
     void OnTriggerEnter(Collider other)
@@ -52,6 +57,7 @@ public class CookingInput : MonoBehaviour
         }
     }
 
+    [ContextMenu("Cook")]
     // Call this function when you want to process the ingredients in the pot
     public void CookIngredients()
     {
@@ -66,6 +72,7 @@ public class CookingInput : MonoBehaviour
         }
     }
 
+    [ContextMenu("Clear Pot")]
     // Optional: Function to clear the pot
     public void ClearPot()
     {
