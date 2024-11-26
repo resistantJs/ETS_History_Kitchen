@@ -27,6 +27,10 @@ public class RecipeManager : MonoBehaviour
                 PlayStoryResult(recipe);
                 break; // Exit loop if you want to process only the first match
             }
+            else
+            {
+                Debug.Log("No Maching Recipe");
+            }
         }
     }
 
