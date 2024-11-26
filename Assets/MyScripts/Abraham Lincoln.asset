@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 997342ca24c71482b96e132fdc94f703, type: 3}
-  m_Name: madagascar
+  m_Name: Abraham Lincoln
   m_EditorClassIdentifier: 
-  name: madagascar
+  name: Abraham Lincoln
