@@ -64,12 +64,6 @@ public class CookingInput : MonoBehaviour
             // Optionally, you can play a sound or visual effect here
         }
         
-        // If not an ingredient, check if it's the Mixer
-        if (other.gameObject.CompareTag("Mixer"))
-        {
-            // The Mixer has entered the trigger - cook the ingredients
-            CookIngredients();
-        }
     }
 
     // This function is called when another collider exits the trigger collider attached to this object
@@ -84,6 +78,13 @@ public class CookingInput : MonoBehaviour
             StopAllAudio();
             Debug.Log("Ingredient removed: " + ingredientObject.ingredientID.name);
             storyTextTMP.SetText("Ingredient removed: " + ingredientObject.ingredientID.name);
+        }
+
+        // If not an ingredient, check if it's the Mixer
+        if (other.gameObject.CompareTag("Mixer"))
+        {
+            // The Mixer has entered the trigger - cook the ingredients
+            CookIngredients();
         }
     }
 
@@ -117,7 +118,7 @@ public class CookingInput : MonoBehaviour
         // Play the clip
         if (audioSource != null && recipe.clip != null)
         {
-            audioSource.PlayOneShot(recipe.clip);
+            //audioSource.PlayOneShot(recipe.clip);
             Debug.LogWarning("AudioPlayed");
 
         }
