@@ -12,4 +12,6 @@ public class StoryResult : ScriptableObject
 
     public AudioClip clip;
 
+    public string storyText;
+
 }

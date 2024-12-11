@@ -2,17 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using TMPro;
 public class RecipeManager : MonoBehaviour
 {
     public StoryResult[] possibleRecipes;
     public CookingInput cookingInput;
 
+    // Reference to the AudioSource component for playing sounds
+    private AudioSource audioSource;
+    
+    // Reference the TextMeshPro game object
+    public GameObject storyTextObject;
+
+    // We'll store the TextMeshPro reference after we get it from the GameObject
+    private TextMeshPro storyTextTMP;
     void Start()
     {
         // If CookingInput is not assigned, try to find it
         if (cookingInput == null)
         {
             cookingInput = FindObjectOfType<CookingInput>();
+        }
+        
+        // Ensure we get the TextMeshPro component from the assigned GameObject
+        if (storyTextObject != null)
+        {
+            storyTextTMP = storyTextObject.GetComponent<TextMeshPro>();
+            if (storyTextTMP == null)
+            {
+                Debug.LogWarning("No TextMeshPro component found on the assigned GameObject.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No TextMeshPro GameObject assigned to storyTextObject.");
         }
     }
 
@@ -66,25 +89,38 @@ public class RecipeManager : MonoBehaviour
         return true;
     }
 
-    // private void PlayStoryResult(StoryResult recipe)
-    // {
-    //     // Assuming you have an AudioSource component on the same GameObject
-    //     AudioSource audioSource = GetComponent<AudioSource>();
-    //     if (audioSource != null && recipe.clip != null)
-    //     {
-    //         audioSource.PlayOneShot(recipe.clip);
-    //     }
-    //     else
-    //     {
-    //         Debug.LogError("AudioSource or AudioClip is missing!");
-    //     }
-
-    //     // You can also handle other outputs, such as displaying the story name
-    //     Debug.Log("Story Unlocked: " + recipe.storyName);
-    // }
     private void PlayStoryResult(StoryResult recipe)
     {
-        // Call the DisplayStory function on the CookingInput script
-        cookingInput.DisplayStory(recipe);
+        // Update the text
+        if (storyTextTMP != null)
+        {
+            //storyTextTMP.text = recipe.storyText;
+            storyTextTMP.SetText("Story: \n"+recipe.storyText);
+        }
+        else
+        {
+            Debug.Log("Story Unlocked: " + recipe.storyName + "\n" + recipe.storyText);
+        }
+        // Assuming you have an AudioSource component on the same GameObject
+        AudioSource audioSource = GetComponent<AudioSource>();
+        if (audioSource != null && recipe.clip != null)
+        {
+            audioSource.PlayOneShot(recipe.clip);
+            Debug.Log("Audio Played");
+        }
+        else
+        {
+            Debug.LogError("AudioSource or AudioClip is missing!");
+        }
+
+        // You can also handle other outputs, such as displaying the story name
+        Debug.Log("Story Unlocked: " + recipe.storyName);
     }
+    // private void PlayStoryResult(StoryResult recipe)
+    // {
+    //     // Call the DisplayStory function on the CookingInput script
+    //     cookingInput.DisplayStory(recipe);
+    // }
+
+    
 }
